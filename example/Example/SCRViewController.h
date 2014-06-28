@@ -8,6 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
-@interface SCRViewController : UIViewController
+@interface SCRViewController : UIViewController <UITextFieldDelegate>
+
+@property (nonatomic, weak) IBOutlet UITextField *textField;
+@property (nonatomic, weak) IBOutlet UILabel *resultLabel;
 
 @end

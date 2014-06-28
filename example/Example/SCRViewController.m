@@ -7,6 +7,7 @@
 //
 
 #import "SCRViewController.h"
+#import "NSString+SCRProfanityChecker.h"
 
 @interface SCRViewController ()
 
@@ -14,16 +15,31 @@
 
 @implementation SCRViewController
 
-- (void)viewDidLoad
-{
+- (void)viewDidLoad {
+    [self.textField setText:@""];
     [super viewDidLoad];
-	// Do any additional setup after loading the view, typically from a nib.
 }
 
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string {
+    NSString *candidate = [textField.text stringByReplacingCharactersInRange:range withString:string];
+    BOOL containsProfanity = [candidate containsProfanity];
+    NSArray *ranges = [candidate rangesOfProfanity];
+    [self updateStatusLabelWithFlag:containsProfanity ranges:ranges string:candidate];
+    return YES;
+}
+
+- (void)updateStatusLabelWithFlag:(BOOL)profanity ranges:(NSArray *)ranges string:(NSString *)string {
+    if (profanity) {
+        NSMutableArray *words = [NSMutableArray array];
+        [ranges enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+            [words addObject:[string substringWithRange:[obj rangeValue]]];
+        }];
+        NSString *wordString = [words componentsJoinedByString:@", "];
+        [self.resultLabel setText:[NSString stringWithFormat:@"The entered text contains profanity: %@", wordString]];
+    }
+    else {
+        [self.resultLabel setText:@"The entered text is clean"];
+    }
 }
 
 @end

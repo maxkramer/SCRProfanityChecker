@@ -1,0 +1,19 @@
+PODS:
+  - Kiwi (2.2.4):
+    - Kiwi/SenTestingKit
+  - Kiwi/ARC (2.2.4)
+  - Kiwi/NonARC (2.2.4)
+  - Kiwi/SenTestingKit (2.2.4):
+    - Kiwi/ARC
+    - Kiwi/NonARC
+  - SCRProfanityChecker (0.0.1)
+
+DEPENDENCIES:
+  - Kiwi
+  - SCRProfanityChecker
+
+SPEC CHECKSUMS:
+  Kiwi: c73667f2b84cbf36f1a3830267c5a4ae8dcbd8ba
+  SCRProfanityChecker: 26220f714c5c19b45ec33417de4afb9118852872
+
+COCOAPODS: 0.33.1

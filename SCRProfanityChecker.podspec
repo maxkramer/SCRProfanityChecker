@@ -1,10 +1,9 @@
-
 Pod::Spec.new do |s|
   s.name         = "SCRProfanityChecker"
   s.version      = "0.0.1"
   s.summary      = "A drop-in profanity checker for files and strings"
   s.homepage     = "https://github.com/MaxKramer/SCRProfanityChecker"
-  s.license      = "MIT"
+  s.license = { :type => 'MIT', :file => 'LICENSE.md' }
   s.author             = { "Max Kramer" => "max@maxkramer.co" }
   s.social_media_url   = "http://twitter.com/MaxKramer"
 

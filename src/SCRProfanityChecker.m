@@ -56,6 +56,7 @@
 
 - (BOOL)stringContainsProfanity:(NSString *)string {
     __block BOOL flag = NO;
+    string = [string lowercaseString];
     [self.words enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
         if ([string rangeOfString:obj].location != NSNotFound) {
             flag = YES;
@@ -75,6 +76,7 @@
 }
 
 - (NSArray *)rangesOfProfanityIn:(NSString *)string {
+    string = [string lowercaseString];
     NSMutableArray *ranges = [NSMutableArray array];
     [self.words enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
         NSRange range = [string rangeOfString:obj];

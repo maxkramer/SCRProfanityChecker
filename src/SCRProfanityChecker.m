@@ -23,7 +23,7 @@
     static SCRProfanityChecker *_shared;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
-        NSString *filePath = [[NSBundle mainBundle] pathForResource:@"Profanity" ofType:@"txt"];
+        NSString *filePath = [[NSBundle bundleForClass:self] pathForResource:@"Profanity" ofType:@"txt"];
         _shared = [[SCRProfanityChecker alloc] initWithListFilePath:filePath];
     });
     return _shared;
